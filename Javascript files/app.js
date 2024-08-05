@@ -2,7 +2,7 @@ const playButton = document.getElementById("play");
 const UI = document.getElementById("UI");
 const score = document.getElementById("score");
 const gameContainer = document.getElementById("game-container");
-const gameArea = document.getElementById("game-area")
+const gameArea = document.getElementById("game-area");
 const player = document.getElementById("player");
 const obstacal = document.getElementById("obstacal");
 let gameMode = false;
@@ -41,19 +41,20 @@ document.addEventListener("keydown", (e) => {
 });
 
 setInterval(() => {
-    x = x + 2;
-    player.style.transform = `translate(${x}px,${y}px)`;
+  x = x + 2;
+  player.style.transform = `translate(${x}px,${y}px)`;
 }, 25);
 
-
-setTimeout(() => {
-    obstacal.style.transform = "translateX(-1000px)";
-}, 1000);
-
-setInterval(()=>{
-    let hurdle = document.createElement("div");
-    let hurdleId = document.createAttribute("id");
-    hurdleId.value = "obstacal";
-    hurdle.setAttributeNode(hurdleId)
-    gameArea.append(hurdle);
-},250)
+function translateObstacal(item) {
+  setTimeout(() => {
+    item.style.transform = "translateX(-110vw)";
+  }, 15);
+}
+setInterval(() => {
+  let hurdle = document.createElement("div");
+  let hurdleId = document.createAttribute("id");
+  hurdleId.value = "obstacal";
+  hurdle.setAttributeNode(hurdleId);
+  gameArea.append(hurdle);
+  translateObstacal(hurdle);
+}, 2500);
